@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Physics-Informed Inference of Ideological Distribution Dynamics in U.S. Legislatures">
+  <meta name="description" content="A physics-informed model of ideological distribution dynamics in U.S. legislatures using Voteview and Shor–McCarty data.">
+  <meta name="author" content="Brian Lee, Francesco Caffrey, Nikki Raman, Xin Li">
+  <title>Physics-Informed Inference of Ideological Distribution Dynamics in U.S. Legislatures</title>
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <!-- Template's carousel, slider, video, icon, and social metadata code is unused on this page. -->
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop has-text-centered">
+          <h1 class="title is-1 publication-title">Physics-Informed Inference of Ideological Distribution Dynamics in U.S. Legislatures</h1>
+          <p class="is-size-5 publication-authors">Brian Lee · Francesco Caffrey · Nikki Raman · Xin Li</p>
+          <p class="is-size-5">Department of Mathematics and Statistics, Georgetown University</p>
+          <p class="publication-links">
+            <span class="button is-rounded is-dark" aria-disabled="true" title="arXiv link forthcoming">arXiv — coming soon</span>
+            <a class="button is-rounded is-dark" href="https://github.com/LauralintheAir/Polarization" target="_blank" rel="noopener noreferrer">Code</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="abstract">
+      <div class="container is-max-desktop content">
+        <h2 class="title is-3">Abstract</h2>
+        <p>Understanding the evolution of legislative polarization requires modeling not only individual ideological positions but also how the full distribution of those positions changes over time. We develop a physics-informed inverse framework for learning ideological distribution dynamics from roll-call-based ideal-point estimates. We represent the ideological distribution as a probability density governed by a nonlinear and nonlocal Fokker–Planck equation, in which the drift combines a position-dependent background component with a distribution-dependent interaction kernel. The latter captures effective attraction- and repulsion-like interactions as a function of ideological separation and allows the aggregate drift to change endogenously as the population redistributes. We infer the unknown dynamics from empirical density trajectories and evaluate the learned law through held-out forward evolution without updating the simulated state with subsequent observations. We apply the framework to DW-NOMINATE scores from Voteview and Shor–McCarty common-space scores for U.S. state legislators. Across both settings, the learned dynamics yield meaningful held-out reconstructions while revealing interaction structures that are not uniformly polarizing. Instead, attraction-like and repulsion-like effects coexist at different ideological distances, and the resulting drift contains both outward and inward transport across ideological space. These results suggest that legislative polarization can be modeled as a state- and distance-dependent redistribution process rather than as a uniform force toward ideological extremes.</p>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="container is-max-desktop content">
+        <h2 class="title is-3">Method</h2>
+        <p>We estimate ideological probability densities from roll-call-based ideal-point scores using kernel density estimation. A nonlinear, nonlocal Fokker–Planck equation models their evolution. Its drift combines a position-dependent background term with an interaction kernel that depends on ideological separation and the current density.</p>
+        <p>We infer the background drift and interaction kernel by fitting observed density trajectories while enforcing the governing equation and boundary conditions. We then hold the learned law fixed and evaluate its forward predictions against later, held-out densities. The analysis uses Voteview DW-NOMINATE scores for the U.S. House and Shor–McCarty common-space scores for state legislators.</p>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="figures">
+      <div class="container content">
+        <h2 class="title is-3 has-text-centered">Inferred dynamics</h2>
+        <div class="columns is-multiline figure-grid">
+        <figure class="column is-half">
+          <img src="static/images/figures/voteview_nonlinear_kernel.png" alt="Voteview interaction kernel graph" loading="lazy">
+          <figcaption><strong>Voteview interaction kernel.</strong> The learned kernel is attraction-like at moderate ideological separations and repulsion-like at larger separations.</figcaption>
+        </figure>
+        <figure class="column is-half">
+          <img src="static/images/figures/voteview_nonlinear_drift.png" alt="Voteview total drift graph" loading="lazy">
+          <figcaption><strong>Voteview total drift.</strong> The distribution-dependent drift shows outward transport across much of the interior and inward transport near the extremes.</figcaption>
+        </figure>
+        <figure class="column is-half">
+          <img src="static/images/figures/shor_nonlinear_kernel.png" alt="Shor–McCarty interaction kernel graph" loading="lazy">
+          <figcaption><strong>Shor–McCarty interaction kernel.</strong> The learned kernel combines short-range attraction-like effects with repulsion-like effects at larger separations.</figcaption>
+        </figure>
+        <figure class="column is-half">
+          <img src="static/images/figures/shor_nonlinear_drift.png" alt="Shor–McCarty total drift graph" loading="lazy">
+          <figcaption><strong>Shor–McCarty total drift.</strong> The total drift changes sign across ideological space, indicating both leftward and rightward transport.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="citation">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title is-3">Citation</h2>
+          <button class="copy-bibtex-btn" type="button" id="copy-citation" aria-label="Copy citation">Copy</button>
+        </div>
+        <p>Citation details forthcoming.</p>
+        <pre id="bibtex-code"><code>@misc{lee_ideological_dynamics,
+  title = {Physics-Informed Inference of Ideological Distribution Dynamics in U.S. Legislatures},
+  author = {Brian Lee and Francesco Caffrey and Nikki Raman and Xin Li},
+  note = {Publication details forthcoming}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container is-max-desktop content">
+      <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io/">Nerfies</a> project page. You are free to borrow the source code of this website, we just ask that you link back to this page in the footer.<br>This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('copy-citation').addEventListener('click', async function () {
+      const button = this;
+      const citation = document.getElementById('bibtex-code').textContent;
+      try {
+        await navigator.clipboard.writeText(citation);
+      } catch (error) {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById('bibtex-code'));
+        selection.removeAllRanges();
+        selection.addRange(range);
+        const copied = document.execCommand('copy');
+        selection.removeAllRanges();
+        if (!copied) return;
+      }
+      button.textContent = 'Copied!';
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        button.classList.remove('copied');
+      }, 2000);
+    });
+  </script>
+
+  <!-- Original template sections are kept commented out for future use.
+  &lt;!-- Scroll to Top Button --&gt;
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  &lt;!-- More Works Dropdown --&gt;
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        &lt;!-- TODO: Replace with your lab's related works --&gt;
+        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
+          <div class="work-info">
+            &lt;!-- TODO: Replace with actual paper title --&gt;
+            <h5>Paper Title 1</h5>
+            &lt;!-- TODO: Replace with brief description --&gt;
+            <p>Brief description of the work and its main contribution.</p>
+            &lt;!-- TODO: Replace with venue and year --&gt;
+            <span class="work-venue">Conference/Journal 2024</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        &lt;!-- TODO: Add more related works or remove extra items --&gt;
+        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Paper Title 2</h5>
+            <p>Brief description of the work and its main contribution.</p>
+            <span class="work-venue">Conference/Journal 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Paper Title 3</h5>
+            <p>Brief description of the work and its main contribution.</p>
+            <span class="work-venue">Conference/Journal 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            &lt;!-- TODO: Replace with your paper title --&gt;
+            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <div class="is-size-5 publication-authors">
+              &lt;!-- TODO: Replace with your paper authors and their personal links --&gt;
+              <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    &lt;!-- TODO: Replace with your institution and conference/journal info --&gt;
+                    <span class="author-block">Institution Name<br>Conference name and year</span>
+                    &lt;!-- TODO: Remove this line if no equal contribution --&gt;
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         &lt;!-- TODO: Update with your arXiv paper ID --&gt;
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    &lt;!-- TODO: Add your supplementary material PDF or remove this section --&gt;
+                    <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  &lt;!-- TODO: Replace with your GitHub repository URL --&gt;
+                  <span class="link-block">
+                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                &lt;!-- TODO: Update with your arXiv paper ID --&gt;
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+&lt;!-- Teaser video--&gt;
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      &lt;!-- TODO: Replace with your teaser video --&gt;
+      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
+        &lt;!-- TODO: Add your video file path here --&gt;
+        <source src="static/videos/banner_video.mp4" type="video/mp4">
+      </video>
+      &lt;!-- TODO: Replace with your video description --&gt;
+      <h2 class="subtitle has-text-centered">
+        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      </h2>
+    </div>
+  </div>
+</section>
+&lt;!-- End teaser video --&gt;
+
+&lt;!-- Paper abstract --&gt;
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          &lt;!-- TODO: Replace with your paper abstract --&gt;
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+&lt;!-- End paper abstract --&gt;
+
+
+&lt;!-- Image carousel --&gt;
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        &lt;!-- TODO: Replace with your research result images --&gt;
+        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
+        &lt;!-- TODO: Replace with description of this result --&gt;
+        <h2 class="subtitle has-text-centered">
+          First image description.
+        </h2>
+      </div>
+      <div class="item">
+        &lt;!-- Your image here --&gt;
+        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          Second image description.
+        </h2>
+      </div>
+      <div class="item">
+        &lt;!-- Your image here --&gt;
+        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+         Third image description.
+       </h2>
+     </div>
+     <div class="item">
+      &lt;!-- Your image here --&gt;
+      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        Fourth image description.
+      </h2>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+&lt;!-- End image carousel --&gt;
+
+
+
+
+&lt;!-- Youtube video --&gt;
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      &lt;!-- Paper video. --&gt;
+      <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="publication-video">
+            &lt;!-- TODO: Replace with your YouTube video ID --&gt;
+            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+&lt;!-- End youtube video --&gt;
+
+
+&lt;!-- Video carousel --&gt;
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Another Carousel</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          &lt;!-- TODO: Add poster image for better preview --&gt;
+          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
+            &lt;!-- Your video file here --&gt;
+            <source src="static/videos/carousel1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          &lt;!-- TODO: Add poster image for better preview --&gt;
+          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
+            &lt;!-- Your video file here --&gt;
+            <source src="static/videos/carousel2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          &lt;!-- TODO: Add poster image for better preview --&gt;
+          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
+            &lt;!-- Your video file here --&gt;
+            <source src="static/videos/carousel3.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+&lt;!-- End video carousel --&gt;
+
+
+
+
+
+
+&lt;!-- Paper poster --&gt;
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+
+      &lt;!-- TODO: Replace with your poster PDF --&gt;
+      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+          </iframe>
+        
+      </div>
+    </div>
+  </section>
+&lt;!--End paper poster --&gt;
+
+
+
+
+  -->
+</body>
+</html>
